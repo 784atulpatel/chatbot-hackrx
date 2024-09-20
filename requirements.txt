@@ -3,10 +3,12 @@ uvicorn
 pydantic
 pandas
 docx
-sentence-transformers
 langchain
 PyPDF2
 chromadb
 ollama
 torch
-langchain-community
+langchain_community
+sentence-transformers==2.2.2  
+transformers==4.18.0            
+tokenizers==0.19.3 
