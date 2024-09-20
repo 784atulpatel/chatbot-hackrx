@@ -8,7 +8,7 @@ PyPDF2
 chromadb
 ollama
 torch
-langchain-community
 sentence-transformers
-transformers      
-tokenizers
+langchain-huggingface
+langchain-chroma
+
