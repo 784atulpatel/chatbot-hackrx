@@ -2,7 +2,7 @@ from fastapi import FastAPI, UploadFile, File, Header
 from pydantic import BaseModel
 import os
 import pandas as pd
-from langchain_community.embeddings import SentenceTransformerEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain_community.llms import Ollama
 from langchain.prompts import PromptTemplate
@@ -17,6 +17,16 @@ app = FastAPI()
 
 # In-memory storage for user sessions and chat history
 user_sessions = defaultdict(lambda: defaultdict(list))  # user_id -> session_id -> chat history
+
+
+# Route for the root URL
+@app.get("/")
+async def read_root():
+    return {"message": "Hello, World!"}
+
+# Function definitions remain the same...
+
+
 
 # Function to extract text from a PDF file
 def extract_text_from_pdf(pdf_path):
@@ -102,8 +112,8 @@ Only return the helpful answer below and nothing else and no questions to be ask
 Helpful answer:
 """
 
-# Initialize the Sentence Transformer Embeddings
-embeddings = SentenceTransformerEmbeddings(model_name="NeuML/pubmedbert-base-embeddings")
+# Initialize the Hugging Face Embeddings
+embeddings = HuggingFaceEmbeddings(model_name="NeuML/pubmedbert-base-embeddings")
 
 # Directory for Chroma DB (company data)
 company_data_directory = "chroma_db"
