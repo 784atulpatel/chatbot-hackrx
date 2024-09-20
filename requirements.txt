@@ -11,4 +11,4 @@ torch
 sentence-transformers
 langchain-huggingface
 langchain-chroma
-
+langchain-community
